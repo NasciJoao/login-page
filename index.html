@@ -171,7 +171,11 @@
             animation: show 0.6s;
         }
 
-        @keyframes show {
+        @keyframes show 
+        /* configura os efeitos de uma animação escolhida apos a tag key
+        frame (show) que ocorrera em espaços de tempo determinados por 
+        porcentagem 0-49,99% e 50-100%*/
+        {
             0%, 49.99% {
                 opacity: 0;
                 z-index: 1;
@@ -180,6 +184,93 @@
                 opacity: 1;
                 z-index: 5;
             }
+        }
+
+        .overlay-container {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            width: 50%;
+            height: 100%;
+            overflow: hidden;
+            transition: transform 0.6s ease-in-out;
+            z-index: 100;
+        }
+
+        .container.right-panel-active .overlay-container {
+            transform: translateX(-100%);
+        }
+
+        .overlay {
+            background: #ff416c;
+            background: -webkit-linear-gradient(to right, #ff4b2b, #ff416c);
+            background: linear-gradient(to right, #ff4b2b, #ff416c);
+            background-repeat: no-repeat;
+            background-size: cover;
+            /* o background vai cobrir todo o container*/
+            background-position: 0 0;
+            color: #ffff;
+            position: relative;
+            left: -100%;
+            height: 100%;
+            width: 200%;
+            transform: translateX(0);
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .container.right-panel-active .overlay{
+            transform: translateX(50%);
+            /* move o container 50% no eixo x*/
+        }
+
+        .overlay-right {
+            right: 0;
+            transform: translateX(0);
+
+        }
+
+        .container.right-panel-active .overlay-right {
+            transform: translateX(20%);
+        }
+
+        .social-container {
+            margin: 20px 0;
+        }
+
+        .social-container a {
+            border: 1px solid ;
+            border-radius: 50%;
+            display: inline-flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 5px;
+            height: 40px;
+            width: 40px;
+        }
+
+        footer {
+            background-color: #222;
+            color: #fff;
+            font-size: 14px;
+            bottom: 0;
+            position: fixed;
+            left: 0;
+            right: 0;
+            text-align: center;
+            z-index: 999;
+        }
+
+        footer p {
+            margin: 10px 0;
+        }
+
+        footer i {
+            color: red;
+        }
+
+        footer a{
+            color: #3c97bf;
+            text-decoration: none;
         }
 
 
