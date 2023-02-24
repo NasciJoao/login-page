@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+
+        *{
+            box-sizing: border-box;
+        }
+
+        body /* configurações do corpo da pagina*/{
+            background: #f6f5f7;
+            /* cor de fundo*/
+            display: flex;
+            /* conteudos flexiveis na tela*/
+            justify-content: center;
+            /* conteudos sempre ficaram no centro do container*/
+            align-items: center;
+            /* conteudos ficam alinhados no centro*/
+            flex-direction: column;
+            /* define a vertical como eixo principal para o alinhamento*/
+            font-family: 'Montserrat', sans-serif;
+            /* define a fonte usada dentro do body*/
+            height: 100vh;
+            /* largura do body*/
+            margin: -20px 0 50px;
+            /* margem do body*/
+        }
+
+        h1 {
+            font-weight: bold;
+            /* fonte do texto de h1 definido como grande (700)*/
+            margin: 0;
+        }
+
+        h2 {
+            text-align: center;
+            /* alinha texto de h2 no centro do container*/
+        }
+
+        p{
+            font-size: 14px;
+            /*tamanho da fonte*/
+            font-weight: 100px;
+            /* largura da fonte*/
+            line-height: 20px;
+            /* espaçamento entre as linhas*/
+            letter-spacing: 0.5px;
+            /* espaçamento entre as letras*/
+            margin: 20px 0 30px;
+            /* margem*/
+        }
+
+        span {
+            font-size: 12px;
+        }
+
+        a{
+            color: #333;
+            font-size: 14px;
+            text-decoration: none;
+            /* retira qualquer tipo de decoração do texto, nesse caso, sublinhado*/
+            margin: 15px 0;
+        }
+
+        button {
+            border-radius: 20px;
+            /* aredonda as pontas do botão*/
+            border: 1px solid #ff4b2b;
+            /* define a largura da borda do botao e sua cor*/
+            background-color: #ff4b2b;
+            /* cor de preenchimento do botao*/
+            color: #ffff;
+            /* cor da letra do botao*/
+            font-size: 12px;
+            /* tamanho da fonte do texto do botao*/
+            font-weight: bold;
+            padding: 12px 45px;
+            /* altura e largura do botao*/
+            letter-spacing: 1px;
+            /* espaçamento entre as letras*/
+            text-transform: uppercase;
+            /* deixa todas as letras em capslock*/
+            transition: transform 80ms ease-in;
+            /* configura o tempo em que as propriedades serao afetadas por um efeito de transição*/
+        }
+
+        button :active {
+            transform: scale(0.95);
+            /* qunado o botao for ativado sua escala diminuira em 0.95*/
+        }
+
+        button :focus {
+            outline: none;
+            /* efeito quando o botao for selecionado configurado para nenhum*/
+        }
+
+        button.ghost /* configuração para a class button ghost*/{
+            background-color: transparent;
+            /* preenchimento do botao transparente*/
+            border-color: #ffff;
+            /* cor branca para a borda*/
+        }
+
+        form /* configurações para o formulario*/{
+            background-color: #ffff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0 50px;
+            height: 100%;
+            text-align: center;
+        }
+
+        input /*  configurações d input*/{
+            background-color: #eee;
+            /* cor de fundo dos campos editaveis*/
+            border: none;
+            /* remove a borda*/
+            padding: 12px 15px;
+            /* distancia entre os inputs*/
+            margin: 8px 0;
+            width: 100%;
+        }
+
+        .container /* configuração da class container*/ {
+            background-color: #ffff;
+            border-radius: 10px;
+            box-shadow: 0 14px 28px rgba(0, 0, 0, 0.25),
+             0 10px 10px rgba(0, 0, 0, 0.22);
+            /* configura a cor da sombra gerada para a box do container, com duas sombras*/
+            position: relative;
+            overflow:hidden ;
+            /* o conteudo gerado alem do tamanho do container 
+            sera escondido sem opção de barra de rolagem*/
+            width: 768px;
+            /* largura do container*/
+            max-width: 100%;
+            min-height: 480px;
+        }
+
+        .form-container {
+            position: absolute;
+            top: 0;
+            height: 100%;
+            transition: all 0.6s ease-in-out;
+        }
+
+        .sign-in-container {
+            left: 0;
+            width: 50%;
+            z-index: 2;
+            /* configura qual a posição desse container no eixo z*/
+        }
+
+        .container.right-panel-active .sign-in-container {
+            transform: translateX(100%);
+        }
+
+        .sign-up-container {
+            left: 0;
+            width: 50%;
+            opacity: 0;
+            z-index: 1;
+        }
+
+        .container.right-panel-active .sign-up-container {
+            transform: translatex(100%);
+            opacity: 1;
+            z-index: 5;
+            animation: show 0.6s;
+        }
+
+        @keyframes show {
+            0%, 49.99% {
+                opacity: 0;
+                z-index: 1;
+            }
+            50%, 100% {
+                opacity: 1;
+                z-index: 5;
+            }
+        }
+
+
+
+
+    </style>
+    <div class="container" id="container">
+        <div class="form-container sign-up-container">
+            <form action="#">
+                <h1>criar conta</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>ou use seu email para se registrar</span>
+                <input type="text" placeholder="Nome" />
+                <input type="email" placeholder="Email" />
+                <input type="password" placeholder="senha" />
+                <button>entrar</button>
+            </form>
+        </div>
+        <div class="form-container sign-in-container">
+            <form action="#">
+                <h1>fazer login</h1>
+                <div class="social-container">
+                    <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                    <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+                <span>ou use sua conta</span>
+                <input type="email" placeholder="Email" />
+                <input type="password" placeholder="senha" />
+                <a href="#">esqueceu sua senha?</a>
+                <button>entrar</button>
+            </form>
+        </div>
+        <div class="overlay-container">
+            <div class="overlay">
+                <div class="overlay-panel overlay-left">
+                    <h1>bem vindo de volta!</h1>
+                    <p>para continuar conectado insira seus dados</p>
+                    <button class="ghost" id="signIn">login</button>
+                </div>
+                <div class="overlay-panel overlay-right">
+                    <h1>olá amigo</h1>
+                    <p>insira seus dados pessoais e venha conosco</p>
+                    <button class="ghost" id="signUp">criar conta</button>
+                </div>
+            </div>
+        </div>
+        </div>
