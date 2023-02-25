@@ -165,7 +165,7 @@
         }
 
         .container.right-panel-active .sign-up-container {
-            transform: translatex(100%);
+            transform: translateX(100%);
             opacity: 1;
             z-index: 5;
             animation: show 0.6s;
@@ -221,6 +221,29 @@
         .container.right-panel-active .overlay{
             transform: translateX(50%);
             /* move o container 50% no eixo x*/
+        }
+
+        .overlay-panel {
+            position: absolute;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            padding: 0 40px;
+            text-align: center;
+            top: 0;
+            height: 100%;
+            width: 50%;
+            transform: translateX(0);
+            transition: transform 0.6s ease-in-out;
+        }
+
+        .overlay-left{
+            transform: translateX(-20%);
+        }
+
+        .container.right-panel-active .overlay-left{
+            transform: translateX(0);
         }
 
         .overlay-right {
